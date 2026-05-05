@@ -630,10 +630,9 @@
         </dl>
       </div>
 
-      <form id="contact-form" class="contact-form reveal">
-        <input type="hidden" name="access_key" value="1f941e5e-0bbc-4dc5-886b-42db522d6136">
-        <input type="hidden" name="subject" value="Nieuwe aanvraag — Vonckx Performance">
-        <input type="hidden" name="from_name" value="Vonckx Performance Website">
+      <form id="contact-form" class="contact-form reveal" name="contact" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p style="display:none"><input name="bot-field"></p>
         <h3>Stuur een bericht</h3>
         <div class="row">
           <div class="field"><label>Naam</label><input type="text" name="naam" required></div>
@@ -818,12 +817,12 @@
       btn.disabled = true;
       btn.textContent = 'Bezig…';
       try {
-        const res = await fetch('https://api.web3forms.com/submit', {
+        const res = await fetch('/', {
           method: 'POST',
-          body: new FormData(this)
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+          body: new URLSearchParams(new FormData(this)).toString()
         });
-        const data = await res.json();
-        if(data.success){
+        if(res.ok){
           result.style.display = 'block';
           result.style.color = '#4caf50';
           result.textContent = 'Bericht verstuurd! We nemen zo snel mogelijk contact met je op.';
@@ -835,7 +834,7 @@
       } catch(err){
         result.style.display = 'block';
         result.style.color = '#e53935';
-        result.textContent = 'Er liep iets mis. Probeer opnieuw of mail ons rechtstreeks.';
+        result.textContent = 'Er liep iets mis. Probeer opnieuw of mail ons rechtstreeks op vonckxperformance@gmail.com.';
         btn.disabled = false;
         btn.innerHTML = 'Verstuur <span class="arr"></span>';
       }
