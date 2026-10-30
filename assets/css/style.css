@@ -239,6 +239,22 @@ section{padding:120px 0}
 .step h4{font-size:19px;font-weight:500;margin-bottom:10px}
 .step p{color:var(--muted);font-size:14.5px;line-height:1.55}
 
+/* ---------- FAQ ---------- */
+.faq-list{border-top:1px solid var(--line-strong)}
+.faq-item{border-bottom:1px solid var(--line-strong)}
+.faq-item summary{
+  list-style:none;cursor:pointer;padding:26px 40px 26px 0;position:relative;
+  font-size:19px;font-weight:500;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';position:absolute;right:0;top:50%;transform:translateY(-50%);
+  font-size:22px;font-weight:300;color:var(--muted);transition:transform .25s;
+}
+.faq-item[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq-item p{color:var(--muted);font-size:15.5px;line-height:1.6;max-width:760px;padding:0 0 26px}
+.faq-item p a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+
 /* ---------- Contact ---------- */
 .contact{border-top:1px solid var(--line)}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}

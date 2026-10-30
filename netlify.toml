@@ -6,3 +6,18 @@
 
 [build.processing.html]
   pretty_urls = true
+
+[[headers]]
+  for = "/netlify-forms.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/book-online/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
